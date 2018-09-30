@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="ThemTanks6"
-run/main_scene="res://tanks/Player.tscn"
+run/main_scene="res://maps/Map01.tscn"
 config/icon="res://icon.png"
 
 [display]
