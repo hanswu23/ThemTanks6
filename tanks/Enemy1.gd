@@ -19,13 +19,18 @@ func control(delta):
 	
 
 func _process(delta):
+	
 	if target:
+		print("target aquired")
 		var target_dir = (target.global_position - global_position).normalized()
 		var current_dir = Vector2(1,0).rotated($Turret.global_rotation)
+		#print (current_dir)
 		$Turret.global_rotation = current_dir.linear_interpolate(target_dir, turret_speed * delta).angle()
-		
+		if target_dir.dot(current_dir) > 0.9:
+			shoot()
 
 func _on_DetectRadius_body_entered(body):
+	print("entered")
 	if body.name == "Player":
 		target = body
 

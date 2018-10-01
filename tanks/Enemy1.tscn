@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tanks/Tank.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tanks/Enemy1.gd" type="Script" id=2]
-[ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=3]
+[ext_resource path="res://bullets/Enemy1Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=4]
+[ext_resource path="res://UI/UnitDisplay.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -12,22 +14,24 @@ extents = Vector2( 35.152, 38.7286 )
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 819.123
+radius = 116.795
 
 [node name="Enemy1" instance=ExtResource( 1 )]
 
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 2 )
-Bullet = null
+_sections_unfolded = [ "Collision" ]
+Bullet = ExtResource( 3 )
 speed = 150
 rotation_speed = 1.0
 gun_cooldown = 1.0
-health = 20
-turret_speed = 1.0
-detect_radius = 200
+turret_speed = 5.0
+detect_radius = 400
 
 [node name="Body" parent="." index="0"]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 308, 262.392, 79, 82.5 )
 _sections_unfolded = [ "Region" ]
@@ -40,7 +44,7 @@ shape = SubResource( 1 )
 [node name="Turret" parent="." index="2"]
 
 rotation = 0.0141382
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 30, 0 )
 region_enabled = true
 region_rect = Rect2( 684.642, 13.4334, 59.625, 24.25 )
@@ -57,12 +61,20 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 4
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Material", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
 
 shape = SubResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="UnitDisplay" parent="." index="5" instance=ExtResource( 5 )]
+
+[connection signal="health_changed" from="." to="UnitDisplay" method="update_healthbar"]
 
 [connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
 
