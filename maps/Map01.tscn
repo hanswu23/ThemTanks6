@@ -42,6 +42,7 @@ _sections_unfolded = [ "Cell", "Visibility" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 _sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
+max_speed = 400
 rotation_speed = 4.0
 gun_cooldown = 1.0
 max_health = 100
@@ -70,6 +71,7 @@ lookahead = 4.0
 position = Vector2( 70.9984, 120.375 )
 scale = Vector2( 0.932213, 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
+max_speed = 100
 max_health = 50
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 5 )]

@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	print ("map01 ready")
 	set_camera_limits()
 
 func set_camera_limits():

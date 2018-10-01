@@ -5,7 +5,7 @@ signal health_changed
 signal dead
 
 export (PackedScene) var Bullet
-export (int) var speed
+export (int) var max_speed
 export (float) var rotation_speed
 export (float) var gun_cooldown
 export (int) var max_health
@@ -18,6 +18,7 @@ var health
 func _ready():
 	health = max_health
 	emit_signal('health_changed', health * 100/max_health)
+	print (health)
 	#emit_signal('health_changed', 100)
 	$GunTimer.wait_time = gun_cooldown
 
