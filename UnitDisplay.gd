@@ -14,13 +14,15 @@ func update_healthbar(value):
 		$HealthBar.texture_progress = bar_yellow
 	if value < 25:
 		$HealthBar.texture_progress = bar_red
+	if value < 100:
+		$HealthBar.show()
 	$HealthBar.value = value
 
 	
-#func _ready():
-#	for node in get_children():
-#		node.hide()
-	
+func _ready():
+	for node in get_children():
+		node.hide()
+
 
 
 func _on_Enemy1_health_changed():

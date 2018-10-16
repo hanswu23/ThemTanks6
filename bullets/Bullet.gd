@@ -20,7 +20,7 @@ func _process(delta):
 	
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
+	# Called when the  node is added to the scene for the first time.
 	# Initialization here
 	pass
 
@@ -30,9 +30,15 @@ func _ready():
 #	pass
 
 func explode():
-	print ("explode")
-	print($LifeTime.wait_time)
-	set_process(false)
+	velocity = Vector2()
+	$Sprite.hide()
+	$Explosion.show()
+	$Explosion.play("smoke")
+	
+func _on_Explosion_animation_finished():
+	#print ("explode")
+	#print($LifeTime.wait_time)
+	#set_process(false)
 	#velocity = Vector2()
 	#$Sprite.hide()
 	queue_free()
