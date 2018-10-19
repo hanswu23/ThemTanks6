@@ -27,3 +27,11 @@ func _ready():
 
 func _on_Enemy1_health_changed():
 	pass # replace with function body
+
+
+func _on_MachineGunTurrent_health_changed():
+	pass # replace with function body
+
+
+func _on_MachineGun_health_changed():
+	pass # replace with function body

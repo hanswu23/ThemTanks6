@@ -15,6 +15,11 @@ var can_shoot = true
 var alive = true
 var health
 
+export (float) var turret_speed
+export (int) var detect_radius
+var speed = 0
+var target = null
+
 func _ready():
 	health = max_health
 	emit_signal('health_changed', health * 100/max_health)
@@ -26,7 +31,7 @@ func control(delta):
         pass
 		
 func shoot():
-	print (can_shoot)
+	print ("can_shoot ",can_shoot)
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
@@ -63,3 +68,12 @@ func explode():
 
 func _on_Explosion_animation_finished():
 	queue_free()
+
+func _on_DetectRadius_body_entered(body):
+	if body.name == "Player":
+		target = body
+
+
+func _on_DetectRadius_body_exited(body):
+	if target == body:
+		target = null

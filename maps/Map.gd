@@ -1,6 +1,6 @@
 extends Node2D
-
 func _ready():
+
 	print ("map01 ready")
 	set_camera_limits()
 	Input.set_custom_mouse_cursor(load("res://assets/UI/crossair_black.png"),Input.CURSOR_ARROW,Vector2(16,16))
@@ -17,5 +17,7 @@ func _on_Tank_shoot(bullet,_position,_direction):
 	add_child(b)
 	b.start(_position, _direction)
 
-func on_tank_shoot():
-	pass # replace with function body
+
+
+func _on_Player_dead():
+	get_tre().reload_current_scene # replace with function body

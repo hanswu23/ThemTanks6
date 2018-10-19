@@ -1,70 +1,69 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tanks/Tank.tscn" type="PackedScene" id=1]
-[ext_resource path="res://tanks/Enemy1.gd" type="Script" id=2]
+[ext_resource path="res://MachineGun.gd" type="Script" id=2]
 [ext_resource path="res://bullets/Enemy1Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=4]
 [ext_resource path="res://UI/UnitDisplay.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35.152, 38.7286 )
+radius = 26.5
 
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 116.795
+radius = 247.535
 
-[node name="Enemy1" instance=ExtResource( 1 )]
+[node name="MachineGun" instance=ExtResource( 1 )]
 
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "collision" ]
+_sections_unfolded = [ "Collision" ]
 Bullet = ExtResource( 3 )
-max_speed = 10
+max_speed = 1
 rotation_speed = 1.0
 gun_cooldown = 1.0
-max_health = 50
-turret_speed = 5.0
-detect_radius = 400
+max_health = 20
+turret_speed = 20.0
+detect_radius = 800
 
 [node name="Body" parent="." index="0"]
 
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 308, 262.392, 79, 82.5 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Z Index" ]
+region_rect = Rect2( 172.141, 89.2405, 49.141, 48 )
+_sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0.115982, -1.62375 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Turret" parent="." index="2"]
 
-rotation = 0.0141382
 texture = ExtResource( 4 )
-offset = Vector2( 30, 0 )
+offset = Vector2( 20, 0 )
 region_enabled = true
-region_rect = Rect2( 684.642, 13.4334, 59.625, 24.25 )
-_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
+region_rect = Rect2( 71.8205, 94.3702, 52.75, 34.75 )
+_sections_unfolded = [ "Offset", "Region" ]
 
 [node name="Muzzle" parent="Turret" index="0"]
 
-position = Vector2( 69.7854, -0.875977 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+position = Vector2( 45, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Flash" parent="Turret" index="1"]
 
-position = Vector2( 60, 0 )
+position = Vector2( 55, 0 )
 texture = ExtResource( 4 )
-offset = Vector2( 25, 0 )
-region_rect = Rect2( 534.882, 18.3101, 52.25, 16.25 )
+offset = Vector2( 20, 0 )
+region_rect = Rect2( 534.641, 18.2405, 52.5, 16 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
 
-[node name="DetectRadius" type="Area2D" parent="." index="4"]
+[node name="DetectRadius" type="Area2D" parent="." index="6"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -75,31 +74,11 @@ collision_layer = 4
 collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Collision", "Pickable" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
 
-position = Vector2( -1, 0 )
 shape = SubResource( 2 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
-
-[node name="LookAhead1" type="RayCast2D" parent="." index="5"]
-
-position = Vector2( 0, 30 )
-enabled = true
-exclude_parent = true
-cast_to = Vector2( 100, 0 )
-collision_mask = 7
-_sections_unfolded = [ "Transform" ]
-
-[node name="LookAhead2" type="RayCast2D" parent="." index="6"]
-
-position = Vector2( 0, -30 )
-enabled = true
-exclude_parent = true
-cast_to = Vector2( 100, 0 )
-collision_mask = 7
-_sections_unfolded = [ "Transform" ]
 
 [node name="UnitDisplay" parent="." index="7" instance=ExtResource( 5 )]
 
