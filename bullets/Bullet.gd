@@ -7,8 +7,6 @@ export (float) var lifetime
 var velocity = Vector2()
 
 func start(_position,_direction):
-	print ("start")
-	print (lifetime)
 	position = _position
 	rotation = _direction.angle()
 	$LifeTime.wait_time = lifetime
@@ -36,11 +34,6 @@ func explode():
 	$Explosion.play("smoke")
 	
 func _on_Explosion_animation_finished():
-	#print ("explode")
-	#print($LifeTime.wait_time)
-	#set_process(false)
-	#velocity = Vector2()
-	#$Sprite.hide()
 	queue_free()
 
 func _on_Bullet_body_entered(body):
@@ -50,8 +43,5 @@ func _on_Bullet_body_entered(body):
 
 
 func _on_LifeTime_timeout():
-	print ("_on_LifeTime_timeout")
-	print (lifetime)
-	print ($LifeTime.wait_time)
 	explode()
 	 

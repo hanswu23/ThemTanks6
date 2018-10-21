@@ -1,36 +1,16 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://terrain/terrain_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://tanks/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tanks/MachineGun.tscn" type="PackedScene" id=4]
-[ext_resource path="res://bullets/Bullet.tscn" type="PackedScene" id=5]
-[ext_resource path="res://PlayerBullet.gd" type="Script" id=6]
-[ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=7]
-[ext_resource path="res://tanks/Enemy1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=9]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 13.4385, 5.78781 )
-
-[sub_resource type="PackedScene" id=2]
-
-resource_local_to_scene = true
-_bundled = {
-"base_scene": 0,
-"conn_count": 0,
-"conns": PoolIntArray(  ),
-"editable_instances": [  ],
-"names": PoolStringArray( "Enemy1Bullet", "rotation", "script", "_sections_unfolded", "speed", "damage", "lifetime", "Sprite", "position", "scale", "texture", "region_enabled", "region_rect", "LifeTime", "CollisionShape2D", "shape", "Explosion" ),
-"node_count": 3,
-"node_paths": [  ],
-"nodes": PoolIntArray( -1, -1, 2147483647, 0, -1, 6, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 0, 0, 0, 2147483647, 262151, -1, 7, 8, 7, 1, 1, 9, 8, 10, 9, 11, 10, 12, 11, 3, 12, 0, 0, 0, 2147483647, 786446, -1, 1, 15, 13, 0 ),
-"variants": [ ExtResource( 5 ), 3.14159, ExtResource( 6 ), [ "Transform" ], 750, 10, 0.007, Vector2( 0.263529, 0 ), Vector2( 0.98536, 1 ), ExtResource( 7 ), true, Rect2( 582.79, 246, 37.5, 16 ), [ "Region", "Transform" ], SubResource( 1 ) ],
-"version": 2
-}
-_sections_unfolded = [ "Resource" ]
+[ext_resource path="res://bullets/bullet_machine_gun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tanks/Enemy1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://bullets/Bullet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://bullets/PlayerBullet.gd" type="Script" id=8]
+[ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=9]
+[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://obstacles/Obstacle.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Curve2D" id=3]
 
@@ -38,6 +18,11 @@ bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, -61.6596, 3.94335, 141.4, 71.4682, 0, 0, -15.4149, 35.4901, 68.2697, 110.249, 0, 0, 5.83783, 57.2739, 62.7296, 514.682, 8.83564, -1.57779, -47.9649, 2.36669, 144.724, 584.488, 0, 0, 78.0069, -2.69876, 880.459, 587.812, 0, 0, -6.04007, -51.1479, 958.021, 499.169, 0, 0, 4.49793, -44.0797, 962.453, 121.33, 0, 0, 62.0714, 1.0281, 862.73, 67.0361, 53.056, -10.0376, 0, 0, 141.4, 71.4682 )
 }
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 13.4385, 5.78781 )
 
 [sub_resource type="PackedScene" id=4]
 
@@ -51,7 +36,7 @@ _bundled = {
 "node_count": 3,
 "node_paths": [  ],
 "nodes": PoolIntArray( -1, -1, 2147483647, 0, -1, 6, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 0, 0, 0, 2147483647, 262151, -1, 7, 8, 7, 1, 1, 9, 8, 10, 9, 11, 10, 12, 11, 3, 12, 0, 0, 0, 2147483647, 786446, -1, 1, 15, 13, 0 ),
-"variants": [ ExtResource( 5 ), 3.14159, ExtResource( 6 ), [ "Transform" ], 750, 10, 0.007, Vector2( 0.263529, 0 ), Vector2( 0.98536, 1 ), ExtResource( 7 ), true, Rect2( 582.79, 246, 37.5, 16 ), [ "Region", "Transform" ], SubResource( 1 ) ],
+"variants": [ ExtResource( 7 ), 3.14159, ExtResource( 8 ), [ "Transform" ], 750, 10, 0.007, Vector2( 0.263529, 0 ), Vector2( 0.98536, 1 ), ExtResource( 9 ), true, Rect2( 582.79, 246, 37.5, 16 ), [ "Region", "Transform" ], SubResource( 1 ) ],
 "version": 2
 }
 _sections_unfolded = [ "Resource" ]
@@ -75,7 +60,7 @@ _bundled = {
 "node_count": 3,
 "node_paths": [  ],
 "nodes": PoolIntArray( -1, -1, 2147483647, 0, -1, 6, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 0, 0, 0, 2147483647, 262151, -1, 7, 8, 7, 1, 1, 9, 8, 10, 9, 11, 10, 12, 11, 3, 12, 0, 0, 0, 2147483647, 786446, -1, 1, 15, 13, 0 ),
-"variants": [ ExtResource( 5 ), 3.14159, ExtResource( 6 ), [ "Transform" ], 750, 10, 0.007, Vector2( 0.263529, 0 ), Vector2( 0.98536, 1 ), ExtResource( 7 ), true, Rect2( 582.79, 246, 37.5, 16 ), [ "Region", "Transform" ], SubResource( 1 ) ],
+"variants": [ ExtResource( 7 ), 3.14159, ExtResource( 8 ), [ "Transform" ], 750, 10, 0.007, Vector2( 0.263529, 0 ), Vector2( 0.98536, 1 ), ExtResource( 9 ), true, Rect2( 582.79, 246, 37.5, 16 ), [ "Region", "Transform" ], SubResource( 1 ) ],
 "version": 2
 }
 _sections_unfolded = [ "Resource" ]
@@ -117,9 +102,10 @@ max_health = 100
 
 [node name="MachineGun" parent="." index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 1578.5, 863.515 )
+position = Vector2( 2404.42, 1728.69 )
+rotation = -4.19306
 _sections_unfolded = [ "Collision", "Visibility", "collision" ]
-Bullet = SubResource( 2 )
+Bullet = ExtResource( 5 )
 max_speed = 0
 rotation_speed = 0.0
 gun_cooldown = 0.1
@@ -144,7 +130,7 @@ cubic_interp = true
 loop = true
 lookahead = 4.0
 
-[node name="Enemy1" parent="Paths/Path2D/PathFollow2D" index="0" instance=ExtResource( 8 )]
+[node name="Enemy1" parent="Paths/Path2D/PathFollow2D" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( 70.9984, 120.375 )
 scale = Vector2( 0.932213, 1 )
@@ -171,13 +157,55 @@ cubic_interp = true
 loop = true
 lookahead = 4.0
 
-[node name="Enemy3" parent="Paths/Path2D2/PathFollow2D" index="0" instance=ExtResource( 8 )]
+[node name="Enemy3" parent="Paths/Path2D2/PathFollow2D" index="0" instance=ExtResource( 6 )]
 
 _sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 Bullet = SubResource( 6 )
 max_speed = 200
 
-[node name="HUD" parent="." index="4" instance=ExtResource( 9 )]
+[node name="HUD" parent="." index="4" instance=ExtResource( 10 )]
+
+[node name="Obstacle" parent="HUD" index="2" instance=ExtResource( 11 )]
+
+position = Vector2( 2591.83, 1483.76 )
+type = 5
+
+[node name="Obstacles" type="Node2D" parent="." index="5"]
+
+[node name="Obstacle" parent="Obstacles" index="0" instance=ExtResource( 11 )]
+
+position = Vector2( 2152.88, 1705.87 )
+rotation = -0.398306
+type = 5
+
+[node name="Obstacle2" parent="Obstacles" index="1" instance=ExtResource( 11 )]
+
+position = Vector2( 2168.49, 1816.85 )
+rotation = 0.366913
+type = 5
+
+[node name="Obstacle3" parent="Obstacles" index="2" instance=ExtResource( 11 )]
+
+position = Vector2( 2200.21, 1597.59 )
+rotation = -2.94776
+type = 5
+
+[node name="Obstacle4" parent="Obstacles" index="3" instance=ExtResource( 11 )]
+
+position = Vector2( 2503.83, 1479.12 )
+rotation = 1.90768
+type = 5
+
+[node name="Obstacle5" parent="Obstacles" index="4" instance=ExtResource( 11 )]
+
+position = Vector2( 2392.49, 1422.32 )
+type = 5
+
+[node name="Obstacle6" parent="Obstacles" index="5" instance=ExtResource( 11 )]
+
+position = Vector2( 2281.7, 1476.06 )
+rotation = 1.09795
+type = 5
 
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 

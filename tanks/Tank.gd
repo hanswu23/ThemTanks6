@@ -23,7 +23,6 @@ var target = null
 func _ready():
 	health = max_health
 	emit_signal('health_changed', health * 100/max_health)
-	print (health)
 	#emit_signal('health_changed', 100)
 	$GunTimer.wait_time = gun_cooldown
 
@@ -31,7 +30,6 @@ func control(delta):
         pass
 		
 func shoot():
-	print ("can_shoot ",can_shoot)
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
