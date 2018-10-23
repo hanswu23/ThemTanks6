@@ -32,7 +32,7 @@ func _process(delta):
 		#print (current_dir)
 		$Turret.global_rotation = current_dir.linear_interpolate(target_dir, turret_speed * delta).angle()
 		if target_dir.dot(current_dir) > 0.9:
-			shoot()
+			shoot(target)
 
 func _on_DetectRadius_body_entered(body):
 

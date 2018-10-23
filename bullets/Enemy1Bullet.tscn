@@ -13,9 +13,9 @@ extents = Vector2( 13.4385, 5.78781 )
 
 rotation = 3.14159
 script = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 speed = 500
-damage = 99
+damage = 49
 lifetime = 0.007
 
 [node name="Sprite" parent="." index="0"]

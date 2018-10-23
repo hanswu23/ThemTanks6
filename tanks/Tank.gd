@@ -29,7 +29,7 @@ func _ready():
 func control(delta):
         pass
 		
-func shoot():
+func shoot(target=null):
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
@@ -48,7 +48,16 @@ func take_damage (amount):
 	emit_signal('health_changed',health * 100/max_health)
 	if health <= 0:
 		explode()
+		print ("emit_signal dead()")
+		emit_signal('dead')
 
+func heal (amount):
+	health += amount
+	emit_signal('health_changed',health * 100/max_health)
+	if health >= 100:
+		explode()
+		print ("emit_signal dead()")
+		emit_signal('dead')
 
 func _on_GunTimer_timeout():
 	can_shoot = true # replace with function body
@@ -75,3 +84,4 @@ func _on_DetectRadius_body_entered(body):
 func _on_DetectRadius_body_exited(body):
 	if target == body:
 		target = null
+

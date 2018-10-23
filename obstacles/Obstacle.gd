@@ -1,4 +1,4 @@
-tool 
+ tool 
 extends StaticBody2D
 
 
@@ -41,7 +41,7 @@ func _update(_type):
 		yield(self,'tree_entered')
 	$Sprite.region_rect = regions[type]
 	var rect = RectangleShape2D.new()
-	rect.extents = $Sprite.region_rect.size/2
+	rect.extents = $Sprite.region_rect.size / 2
 	$CollisionShape2D.shape = rect
 
 	
